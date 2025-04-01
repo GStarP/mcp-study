@@ -27,6 +27,23 @@ def read_file(file_name: str) -> str:
         return f.read()
 
 
+@mcp.tool(
+    name="list_file",
+    description="list all files",
+)
+def list_file() -> list[str]:
+    return os.listdir(base_path)
+
+
+@mcp.tool(
+    name="read_file",
+    description="read file text content",
+)
+def read_file(file_name: str) -> str:
+    with open(base_path + file_name, "r") as f:
+        return f.read()
+
+
 @mcp.tool(name="write_file", description="overwrite file text content")
 def write_file(file_name: str, text: str):
     with open(base_path + file_name, "w") as f:
